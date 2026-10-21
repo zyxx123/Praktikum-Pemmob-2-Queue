@@ -4,7 +4,7 @@ Repository ini berisi implementasi struktur data **Queue (Antrean)** berbasis ko
 
 ---
 
-## 📌 Identitas Mahasiswa
+## Identitas Mahasiswa
 
 - **Nama** : Zaki Fatah Alfikri
 - **NIM** : H1D024124
@@ -13,7 +13,7 @@ Repository ini berisi implementasi struktur data **Queue (Antrean)** berbasis ko
 
 ---
 
-## 📖 Deskripsi Singkat
+## Deskripsi Singkat
 
 Struktur data **Queue** adalah kumpulan elemen berurutan di mana penambahan elemen baru dilakukan di bagian belakang (*tail*) dan pengambilan/penghapusan elemen dilakukan di bagian depan (*head*). Konsep ini mengikuti prinsip **FIFO (First-In, First-Out)**, yaitu elemen yang pertama kali dimasukkan akan menjadi elemen yang pertama kali keluar.
 
@@ -21,7 +21,7 @@ Program dibuat menggunakan **Generics (`Queue<T>`)** agar fleksibel dan dapat di
 
 ---
 
-## 🔍 Penjelasan Kode (`queue.dart`)
+## Penjelasan Kode (`queue.dart`)
 
 1. **Kelas `Queue<T>`**
    - Mendefinisikan antrean generik dengan list privat `_items` untuk menampung data.
@@ -41,7 +41,7 @@ Program dibuat menggunakan **Generics (`Queue<T>`)** agar fleksibel dan dapat di
 
 ---
 
-## 🚀 Cara Menjalankan Program
+## Cara Menjalankan Program
 
 ### Prasyarat
 - **Dart SDK** sudah terpasang. Cek dengan perintah:
@@ -61,7 +61,7 @@ Program dibuat menggunakan **Generics (`Queue<T>`)** agar fleksibel dan dapat di
 
 ---
 
-## 🖥️ Output Program
+## Output Program
 
 ```text
 =================================================
