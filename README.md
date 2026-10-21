@@ -15,110 +15,88 @@ Repository ini berisi implementasi struktur data **Queue (Antrean)** berbasis ko
 
 ## 📖 Deskripsi Singkat
 
-Struktur data **Queue** adalah kumpulan elemen berurutan di mana penambahan elemen baru dilakukan di bagian belakang (*rear/tail*) dan penghapusan atau pemrosesan elemen dilakukan di bagian depan (*front/head*). Konsep ini dikenal dengan prinsip **FIFO (First-In, First-Out)**, di mana elemen yang pertama kali dimasukkan akan menjadi elemen yang pertama kali dikeluarkan.
+Struktur data **Queue** adalah kumpulan elemen berurutan di mana penambahan elemen baru dilakukan di bagian belakang (*tail*) dan pengambilan/penghapusan elemen dilakukan di bagian depan (*head*). Konsep ini mengikuti prinsip **FIFO (First-In, First-Out)**, yaitu elemen yang pertama kali dimasukkan akan menjadi elemen yang pertama kali keluar.
 
-Program ini dibuat menggunakan tipe data **Generics (`Queue<T>`)**, sehingga dapat digunakan secara fleksibel untuk berbagai tipe data (seperti `String`, `int`, objek kustom, dll).
+Program dibuat menggunakan **Generics (`Queue<T>`)** agar fleksibel dan dapat digunakan untuk berbagai tipe data.
 
 ---
 
 ## 🔍 Penjelasan Kode (`queue.dart`)
 
-Berikut adalah komponen utama pada implementasi `queue.dart`:
-
 1. **Kelas `Queue<T>`**
-   - Menggunakan konsep Generic Type `<T>` agar struktur antrean bersifat dinamis terhadap tipe data apapun.
-   - Properti privat `final List<T> _items = [];` digunakan sebagai wadah penyimpan elemen antrean secara internal (enkapsulasi).
-
+   - Mendefinisikan antrean generik dengan list privat `_items` untuk menampung data.
 2. **Metode `enqueue(T item)`**
-   - Berfungsi untuk menambahkan elemen baru ke bagian paling belakang (*tail*) dari antrean.
-   - Menggunakan fungsi bawaan `_items.add(item)` yang menambahkan elemen di indeks terakhir list.
-   - Menampilkan pesan konfirmasi penambahan elemen ke konsol.
-
+   - Menambahkan elemen baru ke urutan paling belakang antrean menggunakan `_items.add(item)`.
 3. **Metode `pop()`**
-   - Berfungsi untuk mengambil sekaligus mengeluarkan elemen dari bagian paling depan (*head*) antrean sesuai aturan FIFO.
-   - Memeriksa kondisi apakah antrean sedang kosong (`isEmpty`). Jika kosong, program mencetak peringatan dan mengembalikan nilai `null` (mencegah *runtime error/exception*).
-   - Jika antrean memiliki isi, program mengambil dan menghapus elemen indeks ke-0 menggunakan `_items.removeAt(0)` lalu mengembalikan elemen tersebut.
-
-4. **Metode dan Properti Tambahan (Helper)**
-   - `isEmpty`: *Getter* boolean untuk memeriksa apakah antrean tidak memiliki elemen.
-   - `isNotEmpty`: *Getter* boolean untuk memeriksa apakah antrean memiliki setidaknya satu elemen.
-   - `length`: *Getter* untuk mengetahui jumlah elemen yang sedang mengantre.
-   - `peek()`: Mengembalikan elemen paling depan tanpa mengeluarkannya dari antrean.
-   - `display()`: Menampilkan daftar seluruh elemen antrean dari urutan depan ke belakang beserta total elemennya.
-   - `clear()`: Mengosongkan seluruh antrean sekaligus.
-
-5. **Fungsi `main()` (Simulasi Pengujian)**
-   - Menguji pembuatan antrean `Queue<String>` (simulasi antrean loket pelayanan).
-   - Menguji operasi `enqueue()` untuk menambahkan beberapa nama pelanggan ("Andi", "Budi", "Citra").
-   - Menguji operasi `peek()` untuk melihat siapa yang sedang berada di antrean paling depan.
-   - Menguji operasi `pop()` untuk memproses pelanggan secara berurutan sesuai FIFO.
-   - Menguji penambahan pelanggan baru ("Dewi", "Eko") di tengah proses.
-   - Menguji pemrosesan seluruh sisa antrean hingga kosong.
-   - Menguji penanganan kasus batas (*edge case*) ketika memanggil `pop()` saat antrean sudah kosong.
+   - Mengambil dan menghapus elemen paling depan antrean menggunakan `_items.removeAt(0)` sesuai aturan FIFO.
+   - Jika antrean kosong, menampilkan pesan peringatan dan mengembalikan `null`.
+4. **Metode Pendukung**
+   - `isEmpty` & `isNotEmpty`: Mengecek status kekosongan antrean.
+   - `length`: Mengetahui jumlah elemen dalam antrean.
+   - `peek()`: Melihat elemen paling depan tanpa menghapusnya.
+   - `display()`: Menampilkan urutan antrean saat ini dari depan ke belakang.
+   - `clear()`: Mengosongkan antrean.
+5. **Fungsi `main()`**
+   - Berisi alur simulasi pengujian antrean: mulai dari penambahan data (`enqueue`), melihat elemen terdepan (`peek`), pemrosesan data berurutan (`pop`), penambahan data baru di tengah jalan, pemrosesan sisa antrean hingga habis, dan pengujian `pop()` saat antrean kosong.
 
 ---
 
 ## 🚀 Cara Menjalankan Program
 
 ### Prasyarat
-- Pastikan **Dart SDK** atau **Flutter SDK** sudah terpasang di komputer Anda.
-- Verifikasi instalasi dengan menjalankan perintah:
+- **Dart SDK** sudah terpasang. Cek dengan perintah:
   ```bash
   dart --version
   ```
 
-### Langkah Menjalankan
-1. Buka terminal atau Command Prompt / PowerShell.
-2. Pastikan berada di direktori project:
+### Menjalankan Program
+1. Buka terminal pada folder proyek:
    ```bash
    cd "D:\Praktikum Pemob"
    ```
-3. Jalankan file Dart dengan perintah:
+2. Jalankan perintah berikut:
    ```bash
    dart run queue.dart
    ```
-   *(atau dapat juga menggunakan `dart queue.dart`)*
 
 ---
 
 ## 🖥️ Output Program
-
-Berikut adalah hasil *output* terminal saat program dijalankan:
 
 ```text
 =================================================
          SIMULASI STRUKTUR DATA QUEUE (FIFO)     
 =================================================
 
-1. Menambahkan antrean awal menggunakan enqueue():
+1. Enqueue data ke antrean:
 -> Enqueue: 'Andi' berhasil ditambahkan ke antrean.
 -> Enqueue: 'Budi' berhasil ditambahkan ke antrean.
 -> Enqueue: 'Citra' berhasil ditambahkan ke antrean.
-   Status Antrean (Depan -> Belakang): [Andi, Budi, Citra] | Total: 3 orang
+   Status Antrean (Depan -> Belakang): [Andi, Budi, Citra] | Total: 3
 
-2. Melihat elemen paling depan tanpa mengeluarkan (peek):
-   Orang paling depan saat ini: Andi
+2. Melihat elemen terdepan (peek):
+   Elemen terdepan: Andi
 
-3. Memproses antrean menggunakan pop() (Prinsip FIFO):
+3. Memproses data dengan pop():
 <- Pop    : 'Andi' telah keluar/diproses dari antrean.
-   Status Antrean (Depan -> Belakang): [Budi, Citra] | Total: 2 orang
+   Status Antrean (Depan -> Belakang): [Budi, Citra] | Total: 2
 <- Pop    : 'Budi' telah keluar/diproses dari antrean.
-   Status Antrean (Depan -> Belakang): [Citra] | Total: 1 orang
+   Status Antrean (Depan -> Belakang): [Citra] | Total: 1
 
-4. Menambahkan pengunjung baru ke dalam antrean:
+4. Menambahkan data baru:
 -> Enqueue: 'Dewi' berhasil ditambahkan ke antrean.
 -> Enqueue: 'Eko' berhasil ditambahkan ke antrean.
-   Status Antrean (Depan -> Belakang): [Citra, Dewi, Eko] | Total: 3 orang
+   Status Antrean (Depan -> Belakang): [Citra, Dewi, Eko] | Total: 3
 
-5. Memproses seluruh sisa antrean hingga habis:
+5. Memproses sisa antrean hingga habis:
 <- Pop    : 'Citra' telah keluar/diproses dari antrean.
-   Status Antrean (Depan -> Belakang): [Dewi, Eko] | Total: 2 orang
+   Status Antrean (Depan -> Belakang): [Dewi, Eko] | Total: 2
 <- Pop    : 'Dewi' telah keluar/diproses dari antrean.
-   Status Antrean (Depan -> Belakang): [Eko] | Total: 1 orang
+   Status Antrean (Depan -> Belakang): [Eko] | Total: 1
 <- Pop    : 'Eko' telah keluar/diproses dari antrean.
    Status Antrean: [KOSONG]
 
-6. Menguji pemanggilan pop() saat antrean sudah kosong:
+6. Uji pop saat antrean kosong:
 [Peringatan] Antrean kosong! Tidak ada elemen yang dapat di-pop.
 
 =================================================
