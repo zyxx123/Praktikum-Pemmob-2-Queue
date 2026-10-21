@@ -1,0 +1,13 @@
+# Ignore other praktikum directories
+Praktikum 1/
+Praktikum 2/
+
+# Ignore PDF documents
+*.pdf
+
+# Ignore IDE and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
