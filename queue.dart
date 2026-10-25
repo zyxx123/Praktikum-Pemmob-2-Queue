@@ -1,86 +1,60 @@
 class Queue<T> {
   final List<T> _items = [];
 
+  // Menambahkan elemen ke antrian (belakang)
   void enqueue(T item) {
     _items.add(item);
-    print("-> Enqueue: '$item' berhasil ditambahkan ke antrean.");
+    print("$item berhasil ditambahkan ke antrian");
   }
 
+  // Mengambil dan menghapus elemen dari antrian (depan)
   T? pop() {
     if (isEmpty) {
-      print("[Peringatan] Antrean kosong! Tidak ada elemen yang dapat di-pop.");
+      print("Antrian kosong! Tidak ada elemen yang dapat dihapus.");
       return null;
     }
     T removedItem = _items.removeAt(0);
-    print("<- Pop    : '$removedItem' telah keluar/diproses dari antrean.");
+    print("$removedItem dihapus dari antrian");
     return removedItem;
   }
 
+  // Mengecek apakah antrian kosong
   bool get isEmpty => _items.isEmpty;
 
+  // Mengecek apakah antrian memiliki isi
   bool get isNotEmpty => _items.isNotEmpty;
 
+  // Melihat jumlah elemen dalam antrian
   int get length => _items.length;
 
+  // Melihat elemen paling depan tanpa menghapus
   T? peek() {
-    if (isEmpty) {
-      return null;
-    }
+    if (isEmpty) return null;
     return _items.first;
   }
 
+  // Menampilkan isi antrian saat ini
   void display() {
-    if (isEmpty) {
-      print("   Status Antrean: [KOSONG]");
-    } else {
-      print("   Status Antrean (Depan -> Belakang): $_items | Total: $length");
-    }
+    print("Isi antrian: $_items");
   }
 
+  // Alias untuk display
+  void tampilkan() => display();
+
+  // Mengosongkan antrian
   void clear() {
     _items.clear();
-    print("-> Antrean telah dikosongkan.");
   }
 }
 
 void main() {
-  print("=================================================");
-  print("         SIMULASI STRUKTUR DATA QUEUE (FIFO)     ");
-  print("=================================================\n");
+  var antrian = Queue<int>();
 
-  var antrean = Queue<String>();
+  antrian.enqueue(10);
+  antrian.enqueue(20);
+  antrian.enqueue(30);
+  antrian.display();
 
-  print("1. Enqueue data ke antrean:");
-  antrean.enqueue("Andi");
-  antrean.enqueue("Budi");
-  antrean.enqueue("Citra");
-  antrean.display();
-
-  print("\n2. Melihat elemen terdepan (peek):");
-  print("   Elemen terdepan: ${antrean.peek()}");
-
-  print("\n3. Memproses data dengan pop():");
-  antrean.pop();
-  antrean.display();
-
-  antrean.pop();
-  antrean.display();
-
-  print("\n4. Menambahkan data baru:");
-  antrean.enqueue("Dewi");
-  antrean.enqueue("Eko");
-  antrean.display();
-
-  print("\n5. Memproses sisa antrean hingga habis:");
-  while (antrean.isNotEmpty) {
-    antrean.pop();
-    antrean.display();
-  }
-
-  print("\n6. Uji pop saat antrean kosong:");
-  antrean.pop();
-
-  print("\n=================================================");
-  print("           SIMULASI SELESAI DENGAN SUKSES        ");
-  print("=================================================");
+  antrian.pop();
+  antrian.display();
 }
